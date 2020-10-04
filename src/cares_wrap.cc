@@ -1069,7 +1069,7 @@ int ParseSoaReply(Environment* env,
     return status == ARES_EBADNAME ? ARES_EBADRESP : status;
   }
 
-  if (ptr + temp_len + NS_QFIXEDSZ > buf + len) {
+  if (temp_len + NS_QFIXEDSZ < temp_len || temp_len + NS_QFIXEDSZ > len) {
     return ARES_EBADRESP;
   }
   ptr += temp_len + NS_QFIXEDSZ;
